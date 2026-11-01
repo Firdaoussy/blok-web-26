@@ -5,15 +5,18 @@
 ## Jij
 
 ### Auteur:
-(naam)
+Firdaouss Yakubi
 
 #### Je startniveau:
-(invullen)
+Blauw 
 
 #### Je focus:
 Responsive
 
 ## Je website
+https://www.jinc.nl/
+
+https://www.jinc.nl/ons-werk/onze-missie/
 
 ### Je opdracht:
 Nabouwen van twee pagina's van JINC (homepage en "Onze missie") op basis van mijn breakdown.
@@ -23,7 +26,34 @@ Nabouwen van twee pagina's van JINC (homepage en "Onze missie") op basis van mij
 
 ## Toegankelijkheidstest 1/2 (week 1)
 
-(invullen: bevindingen per onderdeel: screenreader, muis en toetsenbord, motoriek, visueel, en wat je ervan verbetert)
+## Toegankelijkheidstest 1/2 (week 1)
+
+Voor mijn toegankelijkheidstest heb ik gekeken naar de website van JINC. Hierbij heb ik vooral gelet op hoe toegankelijk de website is voor verschillende gebruikers en welke onderdelen eventueel verbeterd kunnen worden.
+
+### Screenreader
+Bij het bekijken van de website viel mij op dat niet alle knoppen en links even duidelijk zijn benoemd. Zo heeft de zoekknop geen duidelijke naam en is de structuur van sommige koppen niet helemaal logisch. Dit kan verwarrend zijn voor mensen die een screenreader gebruiken.
+
+**Wat neem ik mee:** Ik wil proberen mijn HTML zo logisch mogelijk op te bouwen en duidelijke namen te gebruiken voor knoppen en links.
+
+### Muis en toetsenbord
+Wat mij vooral opviel, was de footer op mobiel. De onderdelen die je kunt uitklappen werken niet goed, waardoor sommige links moeilijk bereikbaar zijn. Ook is het belangrijk dat je zonder muis door een website kunt navigeren.
+
+**Wat neem ik mee:** Ik wil hier tijdens het bouwen rekening mee houden en proberen mijn knoppen en menu's zo toegankelijk mogelijk te maken.
+
+### Motoriek
+Voor mensen die moeite hebben met kleine bewegingen, kunnen knoppen die dicht op elkaar staan lastig zijn. Vooral bij de socialmedia-iconen en de footerlinks kan dit een probleem zijn.
+
+**Wat neem ik mee:** Ik wil waar mogelijk voldoende ruimte houden tussen knoppen en links, zodat deze makkelijker aan te klikken zijn.
+
+### Visueel
+Bij het bekijken van de website heb ik vooral gelet op de leesbaarheid. Sommige teksten staan over afbeeldingen heen, waardoor contrast belangrijk is. Ook moet de website overzichtelijk blijven op kleinere schermen.
+
+**Wat neem ik mee:** Ik wil proberen rekening te houden met contrast, lettergroottes en de leesbaarheid op mobiel.
+
+### Reflectie
+Door deze toegankelijkheidstest ben ik me er meer van bewust geworden dat er bij het bouwen van een website meer komt kijken dan alleen het uiterlijk. Eerlijk gezegd ben ik op dit moment vooral bezig met het goed namaken van de website en vind ik dat al best een uitdaging.
+
+Ik ga daarom niet alle verbeterpunten uit de toegankelijkheidstest kunnen toepassen, maar wil ze wel zoveel mogelijk in mijn achterhoofd houden tijdens het bouwen. Waar het lukt, probeer ik er rekening mee te houden. Voor mij is het vooral belangrijk dat ik begrijp waarom toegankelijkheid een rol speelt en dat ik hier bewuster mee omga.
 
 ## Breakdownschets
 
@@ -114,54 +144,87 @@ Mijn grootste leerpunt tot nu toe is dat ik niet alles zo snel mogelijk moet wil
 <img src="readme-images/uitkomst-menu.png" width="375px" alt="paars uitklapmenu op de missiepagina">
 
 ### Dit ging goed/Heb ik geleerd:
-(invullen)
+Het is mij gelukt om de homepage en missiepagina van JINC na te bouwen met HTML, CSS en JavaScript. Ik ben echt mobile first begonnen en heb geprobeerd alles responsive te maken, zodat de website op zowel mobiel als desktop goed werkt. Ook heb ik geleerd hoe ik met breakpoints het hamburgermenu kan veranderen naar een normale navigatiebalk.
+
+Wat ik echt een uitdaging vond, waren de uitklapbare onderdelen in het menu en de footer. Hiervoor heb ik <details> en <summary> gebruikt. Vraag me niet om het morgen opnieuw te maken, haha, want het heeft me echt veel moeite gekost.
+
+Daarnaast heb ik geprobeerd rekening te houden met toegankelijkheid, zoals een skiplink, duidelijke focusranden en het bedienen van menu's met een toetsenbord. Ook heb ik een dark en light mode gemaakt, een nieuwsbriefpop-up toegevoegd en gewerkt met animaties.
 
 ### Dit was lastig/Is niet gelukt:
-(invullen)
+Dit was lastig / Is niet gelukt:
 
-## Uitleg van de code (voor het eindgesprek)
+Wat ik tijdens het bouwen vooral lastig vond, was JavaScript. HTML en CSS kon ik na een tijdje steeds beter volgen, maar bij JavaScript had ik vaak het gevoel dat ik opnieuw moest beginnen.
 
-Zo is de site opgebouwd. Oefen dit hardop, je moet het kunnen uitleggen én aanpassen.
+Soms begreep ik iets op het moment dat het werd uitgelegd, maar zodra ik het later zelf moest toepassen, wist ik niet meer precies hoe het werkte of ging het mis en werkte het niet meer. Ik heb daarom echt van alle kanten hulp gezocht. Ik heb medestudenten gevraagd, kennissen om hulp gevraagd en AI gebruikt wanneer ik ergens niet uitkwam. Daarbij probeerde ik ook steeds te begrijpen wat ik precies aan het doen was, in plaats van alleen maar code over te nemen. Dat lukte niet altijd even goed, maar ik heb wel mijn best gedaan om er iets van te leren.
 
-- **Mappen (zelfde opbouw als mijn Vue-site):** `index.html` en `missie.html`, `styles/` (algemeen `styles.css`, plus `home.css` en `missie.css` per pagina), `scripts/script.js`, `images/`, `readme-images/`.
-- **Header (zoals mijn Vue-site):** op de homepage staat het logo in de `h1` en is het geen link (je bent al op de homepage); op de missiepagina is het logo een link naar home. Daarnaast de uitklapmenu's met `<details>` en `<summary>`, een zoekknop, de thema-knop en de hamburgerknop met een sluitknop in de `nav`.
-- **Custom properties** (bovenaan `styles.css`): alle kleuren, lettertypes en de uitklaptijd staan op één plek. De donkere modus overschrijft alleen die variabelen via de class `.donker-modus`.
-- **Thema-knop:** zet de class `donker-modus` op `body` en onthoudt de keuze in `localStorage` (met `try/catch`, omdat opslag geblokkeerd kan zijn).
-- **Hamburgermenu:** de class `menuopenklappen` schuift de `nav` in beeld; `aria-expanded` houdt de screenreader op de hoogte. Bij openen gaat de focus naar de sluitknop en wordt de rest van de pagina `inert`, zodat je met Tab in het menu blijft. Sluitknop of Escape sluit het menu en zet de focus terug op de hamburger. Wordt het scherm breder dan 54em (telefoon draaien), dan sluit het menu vanzelf en staan de menukopjes gewoon in de header.
-- **Pop-up nieuwsbrief:** het ingebouwde `<dialog>`-element. `showModal()` opent hem met donkere achtergrond en houdt de focus erbinnen; sluiten kan met de knop, Escape of een klik ernaast.
-- **Cijfers die oplopen (micro-interactie):** `IntersectionObserver` merkt dat een getal in beeld komt, daarna telt `requestAnimationFrame` in 1,5 seconde op met een easing. Wie minder beweging wil (`prefers-reduced-motion`) ziet meteen het eindgetal.
-- **Paarse uitklapmenu's (Ons werk, Doe mee, Over JINC):** `<details>` met `<summary>`, net als in mijn Vue-site. Openen en sluiten (ook met Enter en spatie) doet de browser zelf. JS regelt de extra's: maar één lijst tegelijk open (`toggle`-event), Escape sluit hem en zet de focus terug op het kopje, en een klik ernaast of met Tab eruit gaan (`focusout`, groot scherm) sluit hem ook.
-- **Zoeken:** de vergrootglas-knop klapt het zoekveld uit (class `open`, `aria-expanded`), net als de zoekbalk op mijn Vue-site. Het formulier zoekt op jinc.nl via Google (`as_sitesearch`). Escape of een klik ernaast klapt het weer in.
-- **Hero-foto:** loopt van rand tot rand. `aspect-ratio` maakt hem 3:2 op de telefoon, 2:1 op een tablet en 3:1 op een groot scherm (zoals de brede banner op jinc.nl); `object-fit: cover` en `object-position` houden de gezichten in beeld. De kop ligt er met `position: absolute` bovenop.
-- **Springende plaatjes:** `@keyframes spring` laat de drie illustraties omhoog hoppen; JS zet eenmalig de class `springt` als ze in beeld komen (na elkaar door `--vertraging`), en `:hover` laat ze opnieuw springen.
-- **Topbalk:** donkergrijze balk boven de header met service-links (JINC-podcast, Vacatures, Contact, Registreren) en de thema-knop.
-- **Surface plane:** het stippenpatroon op de achtergrond van `body` (`radial-gradient`), dat meekleurt in de donkere modus.
-- **Responsive:** mobile first. Vanaf 48em krijgen kaarten, nieuws, partners en cijfers meerdere kolommen; vanaf 54em staat het menu in de header en heeft de footer vier kolommen; vanaf 75em wordt de hero-foto een brede banner.
-- **Kleurcontrast:** tekst op de teal vlakken is wit op `#00796f` (5.3:1) en linkkleur `#a84d00`, beide boven de 4.5:1 van WCAG AA. Ook de hoverkleur en de huidige pagina in het paarse menu halen 4.5:1, in licht én donker thema.
+Wat ik ook lastig vond, was dat ik soms zo lang bezig was met één onderdeel dat ik het overzicht verloor over wat er nog moest gebeuren. Hierdoor heb ik niet alles kunnen afronden zoals ik had gewild.
+
+
+Ondanks dat niet alles is gelukt, ben ik wel blij met wat ik uiteindelijk heb gemaakt. Het heeft mij veel moeite gekost, maar ik heb geprobeerd om door te zetten, hulp te zoeken en vooral te begrijpen hoe alles werkt.
+
+Voor een volgende keer wil ik niet treuzelen en te onzeker zijn ik merk dat ik enorm gedemotiveerd ben omdat ik dit vak niet leuk vindt. beter plannen en blijven oefenen, zodat ik minder afhankelijk word van hulp en steeds meer zelfstandig kan maken.
+
 
 ## Bronnenlijst
 
 Bronnen voor de technieken in de code (voeg je eigen bronnen toe en vul aan wat je zelf hebt gebruikt):
 
-1. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-2. https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-3. https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
-4. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
-5. https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Using_CSS_custom_properties
-6. https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
-7. https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
-8. https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert
-9. https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame
-10. https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
-11. https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient
-12. https://www.a11yproject.com/posts/how-to-hide-content/
-13. https://easings.net/#easeOutCubic
-14. https://webaim.org/resources/contrastchecker/
-15. https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
-16. https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+Bronnen voor de technieken in de code (voeg je eigen bronnen toe en vul aan wat je zelf hebt gebruikt):
+https://www.w3schools.com/tags/tag_select.asp
 
-De bronnen staan ook als `/* bron: ... */` in de code, bij het stuk waar ze gebruikt zijn.
+https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function*/
+
+https://css-tricks.com/a-complete-guide-to-calc-in-css/*/
+
+https://www.javatpoint.com/how-to-center-a-button-in-css
+
+https://codepen.io/shooft/pen/BarqVdR*/
+
+https://www.w3schools.com/howto/howto_css_list_without_bullets.asp */
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email*/
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow*/
+
+https://stackoverflow.com/questions/8287447/create-a-white-rgba-css3*/
+
+https://www.w3.org/TR/css-multicol-1/*/
+
+https://codepen.io/shooft/pen/yLEwVXm*/
+
+https://www.handleidinghtml.nl/css/eigenschappen/white-space/beschrijving.html*/
+
+https://stackoverflow.com/questions/25125793/
+
+html-css-display-text-and-wrap-it-propertly-in-two-columns-and-a-single-row*/
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries*/
+
+https://kinsta.com/nl/blog/responsive-webdesign/*/
+
+bron:https://fsymbols.com/copyright/
+
+bron:https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details-->
+
+bron:https://codepen.io/ahmadbassamemran/pen/rNjMXqg -->
+
+https://www.freecodecamp.org/news/span-html-how-to-use-the-span-tag-with-css/-->
+bron:https://www.w3schools.com/html/html_quotation_elements.asp -->
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type-->
+bron:https://codepen.io/simevidas/pen/PJMENp-->
+
+<https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video> -->
+						<!-- <https://www.w3schools.com/html/html5_video.asp> -->
+						<!-- <https://yt5s.io/en1/youtube-to-mp4> -->
+
+/*bron: https://www.w3schools.com/howto/howto_css_list_without_bullets.asp */
+
+/*bron:https://www.handleidinghtml.nl/css/eigenschappen/white-space/beschrijving.html*/
+/*bron:https://stackoverflow.com/questions/25125793/html-css-display-text-and-wrap-it-propertly-in-two-columns-and-a-single-row*/
+
+/*bron:https://codepen.io/shooft/pen/BarqVdR*/
+
 
 Foto's, illustraties en logo's zijn van JINC (jinc.nl) en alleen gebruikt voor deze schoolopdracht.
 
-> Let op: schrijf in je procesverslag eerlijk op welke hulp je hebt gebruikt, ook AI-hulp, en volg daarvoor de regels van je opleiding.
