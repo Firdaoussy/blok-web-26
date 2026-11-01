@@ -1,0 +1,722 @@
+/**************/
+/* CSS REMEDY */
+/**************/
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+button,
+summary {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	font: inherit;
+	color: inherit;
+}
+
+/* geen standaard driehoekje bij details, we tekenen zelf een pijltje */
+/* bron: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details */
+summary {
+	list-style: none;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+/* bron: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
+
+:root {
+	--color-teal: #00a59c;
+	--color-teal-donker: #00716b;
+	--color-vlak: #00796f; 
+	--color-oranje: #f28220;
+	--color-groen: #438024; 
+	--color-paars: #350b5f;
+	--color-paars-tekst: #3b1a6e;
+	--color-topbalk: #2b2b2b;
+	--color-background: #fafaf8;
+	--color-background-kaart: #f1f1ee;
+	--color-text: #1d1d1d;
+	--color-headings: #00716b;
+	--color-link: #a84d00;
+	--color-header: #ffffff;
+	--color-nav: #ffffff;
+	--color-stip: #dcdcd6;
+	--color-focus: #3b1a6e;
+	--font-kop: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+	--font-tekst: system-ui, 'Segoe UI', Arial, sans-serif;
+	--uitklaptijd: .4s;
+}
+
+/* donkere modus: alleen de custom properties worden overschreven */
+.donker-modus {
+	--color-background: #0f2423;
+	--color-background-kaart: #173231;
+	--color-text: #f1f1ee;
+	--color-headings: #5fe0d6;
+	--color-link: #ffb066;
+	--color-header: #0a1918;
+	--color-nav: #0a1918;
+	--color-stip: #1f3a39;
+	--color-paars-tekst: #e9ddff;
+	--color-focus: #ffffff;
+}
+
+/*********************/
+/* ALGEMENE STYLING  */
+/*********************/
+
+html {
+	scroll-padding-top: 5rem; /* ankerlinks verdwijnen niet onder de vaste header */
+}
+
+body {
+	margin: 0;
+	background-color: var(--color-background);
+	/* surface plane: subtiel stippenpatroon op de achtergrond */
+	/* bron: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient */
+	background-image: radial-gradient(var(--color-stip) 1.5px, transparent 1.5px);
+	background-size: 1.6rem 1.6rem;
+	color: var(--color-text);
+	font-family: var(--font-tekst);
+	line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-kop);
+	line-height: 1.15;
+	letter-spacing: -0.03em;
+	margin: 0 0 .6em;
+}
+
+a {
+	color: var(--color-link);
+}
+
+main section {
+	padding: 2.5rem 1.25rem;
+}
+
+main section>* {
+	max-width: 70rem;
+	margin-inline: auto;
+}
+
+/* wel voor de screenreader, niet in beeld */
+/* bron: https://www.a11yproject.com/posts/how-to-hide-content/ */
+.onzichtbaar,
+.sla-over:not(:focus) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+}
+
+.sla-over {
+	position: absolute;
+	z-index: 20;
+	padding: .75rem;
+	background-color: #fff;
+	color: #000;
+}
+
+/* pijltje bij elke uitklaplijst (menu en footer), draait om als hij open is */
+summary::after {
+	content: "";
+	flex-shrink: 0;
+	width: .55rem;
+	height: .55rem;
+	margin-left: .6rem;
+	border-right: .16em solid currentColor;
+	border-bottom: .16em solid currentColor;
+	transform: rotate(45deg) translateY(-.15rem);
+	transition: transform .2s;
+}
+
+details[open]>summary::after {
+	transform: rotate(225deg);
+}
+
+/*** KNOPPEN ***/
+
+.knop {
+	display: inline-block;
+	min-height: 2.75rem;
+	padding: .7rem 1.6rem;
+	border-radius: .4rem;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+}
+
+.knop-teal {
+	background-color: var(--color-teal-donker);
+}
+
+.knop-oranje {
+	background-color: #b85400;
+}
+
+.knop-groen {
+	background-color: var(--color-groen);
+}
+
+/* 'Lees meer'-links (homepage en missiepagina) */
+.lees-meer {
+	display: inline-block;
+	padding-block: .3rem; /* groter klikvlak */
+	font-weight: 700;
+	color: var(--color-paars-tekst);
+	text-decoration: none;
+}
+
+.lees-meer::before {
+	content: "→ ";
+}
+
+/************/
+/** STATES **/
+/************/
+
+/** hover **/
+
+/* hoverkleur met genoeg contrast in licht én donker thema */
+a:hover,
+header nav summary:hover {
+	color: var(--color-headings);
+}
+
+.knop:hover {
+	transform: scale(1.04);
+	color: #fff;
+}
+
+.lees-meer:hover {
+	text-decoration: underline;
+}
+
+.topbalk a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.themaknop:hover {
+	background-color: var(--color-vlak);
+}
+
+header nav details a:hover,
+header nav details button:hover {
+	color: #ffb066;
+}
+
+/** focus **/
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+	outline: .2em solid var(--color-focus);
+	outline-offset: .2em;
+}
+
+/* op donkere vlakken een witte focusrand */
+.topbalk :focus-visible,
+header nav details ul :focus-visible {
+	outline-color: #fff;
+}
+
+/** active **/
+
+.knop:active,
+.themaknop:active,
+.zoekknop:active,
+.hamburger:active {
+	transform: translateY(.1em);
+}
+
+/*************/
+/** TOPBALK **/
+/*************/
+
+.topbalk {
+	display: flex;
+	flex-wrap: wrap; /* bij hele smalle schermen of grote letters mag het naar een tweede regel */
+	align-items: center;
+	justify-content: flex-end;
+	gap: .25rem 1.5rem;
+	padding: .2rem 1rem;
+	background-color: var(--color-topbalk);
+	font-size: .85rem;
+	color: #fff;
+}
+
+.topbalk ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 1.25rem;
+}
+
+.topbalk a {
+	display: inline-block;
+	padding-block: .45rem; /* groter klikvlak */
+	color: #fff;
+	text-decoration: none;
+}
+
+.themaknop {
+	min-height: 2rem;
+	padding: 0 .9rem;
+	border: .12em solid #fff;
+	border-radius: 2em;
+	font-weight: 700;
+	color: #fff;
+}
+
+/************/
+/** HEADER **/
+/************/
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	gap: .25rem;
+	padding-right: .75rem;
+	background-color: var(--color-header);
+	box-shadow: 0 .1rem .4rem rgba(0, 0, 0, .12);
+}
+
+/* logo: h1 op de homepage, link op de andere pagina */
+.logo {
+	margin: 0 auto 0 0;
+	line-height: 0;
+}
+
+.logo img {
+	width: 8.5rem;
+}
+
+/*** zoeken ***/
+
+.zoeken {
+	display: flex;
+	align-items: center;
+}
+
+.zoekknop,
+.hamburger {
+	display: grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	color: var(--color-text);
+}
+
+/* vergrootglas getekend met svg; kleur volgt de tekstkleur */
+.zoekknop svg {
+	width: 1.4rem;
+	height: 1.4rem;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2.5;
+	stroke-linecap: round;
+}
+
+/* telefoon: het zoekveld klapt uit onder de header, over de volle breedte */
+#zoekveld {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	padding: .8rem 1rem;
+	border: none;
+	border-bottom: .15em solid var(--color-teal-donker);
+	background-color: var(--color-header);
+	color: var(--color-text);
+	font: inherit;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity .2s, visibility .2s;
+}
+
+.zoeken.open #zoekveld {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity .2s, visibility 0s; /* meteen zichtbaar, zodat het veld direct focus kan krijgen */
+}
+
+/*** hamburgerknop: een span en twee pseudo-elementen ***/
+
+.hamburger span,
+.hamburger span::before,
+.hamburger span::after {
+	display: block;
+	width: 1.6rem;
+	height: .2rem;
+	background-color: currentColor;
+	content: "";
+}
+
+.hamburger span {
+	position: relative;
+}
+
+.hamburger span::before {
+	position: absolute;
+	top: -.5rem;
+}
+
+.hamburger span::after {
+	position: absolute;
+	top: .5rem;
+}
+
+/*********************************************/
+/** NAV (telefoon: uitklapmenu van rechts) **/
+/*********************************************/
+
+header nav {
+	position: fixed;
+	inset: 0 0 0 auto;
+	z-index: 15;
+	width: min(21rem, 88vw);
+	padding: 4rem 1.5rem 1.5rem;
+	overflow-y: auto;
+	background-color: var(--color-nav);
+	box-shadow: -.5rem 0 2rem rgba(0, 0, 0, .25);
+	transform: translateX(100%);
+	visibility: hidden;
+	transition: transform var(--uitklaptijd), visibility var(--uitklaptijd);
+}
+
+/* bij openen meteen zichtbaar (visibility 0s), zodat de sluitknop direct focus kan krijgen;
+   bij dichtklappen pas onzichtbaar na het uitschuiven */
+header nav.menuopenklappen {
+	transform: translateX(0);
+	visibility: visible;
+	transition: transform var(--uitklaptijd), visibility 0s;
+}
+
+.sluitknop {
+	position: absolute;
+	top: .5rem;
+	right: .75rem;
+	width: 2.75rem;
+	height: 2.75rem;
+	font-size: 2rem;
+}
+
+/* menu-items: links en de kopjes van de uitklaplijsten */
+header nav li a,
+header nav summary {
+	display: flex;
+	align-items: center;
+	min-height: 2.75rem;
+	padding: .7rem 0;
+	font-family: var(--font-kop);
+	font-size: 1.2rem;
+	color: var(--color-text);
+	text-decoration: none;
+}
+
+/* het paarse paneel van een uitklaplijst */
+header nav details ul {
+	padding: .5rem 1.25rem;
+	background-color: var(--color-paars);
+}
+
+header nav details a,
+header nav details button {
+	display: block;
+	width: 100%;
+	min-height: 2.75rem;
+	padding: .7rem 0;
+	font-family: var(--font-tekst);
+	font-size: 1.05rem;
+	font-weight: 600;
+	text-align: left;
+	color: #fff;
+}
+
+/* de pagina waar je nu bent */
+header nav details [aria-current] {
+	text-decoration: underline;
+	text-decoration-thickness: .15em;
+}
+
+header nav a.knop {
+	display: inline-block;
+	margin-top: .75rem;
+	padding: .7rem 1.4rem;
+	font-family: var(--font-tekst);
+	font-size: 1rem;
+	color: #fff;
+}
+
+/************/
+/** FOOTER **/
+/************/
+/* body>footer: alleen de footer van de pagina, niet de footer in het citaat */
+
+body>footer {
+	padding: 2rem 1.25rem;
+	background-color: var(--color-header);
+}
+
+body>footer>* {
+	max-width: 70rem;
+	margin-inline: auto;
+}
+
+footer details {
+	border-bottom: .1em solid var(--color-stip);
+}
+
+footer summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 2.75rem;
+	padding: 1rem 0;
+	font-family: var(--font-kop);
+	font-weight: 700;
+}
+
+footer details li a {
+	display: block;
+	padding: .4rem 0;
+}
+
+footer h2 {
+	margin-top: 1.5rem;
+	font-size: 1.1rem;
+	color: var(--color-text);
+}
+
+footer p {
+	margin: .4rem 0;
+}
+
+.social {
+	display: flex;
+	gap: .6rem;
+}
+
+.social a {
+	display: grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: .1em solid var(--color-text);
+	font-weight: 700;
+	text-decoration: none;
+	color: var(--color-text);
+}
+
+/*****************************/
+/** POP-UP NIEUWSBRIEF (dialog) **/
+/*****************************/
+
+dialog {
+	width: min(30rem, 92vw);
+	padding: 1.5rem;
+	border: .2em solid var(--color-teal);
+	border-radius: .8rem;
+	background-color: var(--color-background);
+	color: var(--color-text);
+}
+
+dialog::backdrop {
+	background-color: rgba(10, 25, 24, .7);
+}
+
+dialog[open] {
+	animation: popup-in .3s ease-out;
+}
+
+@keyframes popup-in {
+	from {
+		opacity: 0;
+		transform: translateY(1.5rem) scale(.96);
+	}
+}
+
+.popup-form h2 {
+	font-size: 1.4rem;
+	color: var(--color-headings);
+}
+
+.popup-form input {
+	display: block;
+	width: 100%;
+	min-height: 2.75rem;
+	margin-top: .3rem;
+	padding: .5rem .8rem;
+	border: .15em solid var(--color-teal);
+	border-radius: .4rem;
+	font: inherit;
+}
+
+.popup-melding {
+	min-height: 1.6em;
+	font-weight: 700;
+}
+
+.popup-knoppen {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .75rem;
+}
+
+/***************************************/
+/** RESPONSIVE: groot scherm (54em+) **/
+/***************************************/
+
+/* hier heb ik gekonzen voor een grotere breekpunt omdat het beter werkte navigatie en de footer */
+
+@media (min-width: 54em) {
+	main section {
+		padding: 4rem 2rem;
+	}
+
+	/* hamburgermenu niet meer nodig: het menu staat gewoon in de header */
+	.hamburger,
+	.sluitknop {
+		display: none;
+	}
+
+	header {
+		gap: 1rem;
+		padding-right: 1.5rem;
+	}
+
+	.logo img {
+		width: 11rem;
+	}
+
+	header nav {
+		position: static;
+		width: auto;
+		padding: 0;
+		overflow: visible;
+		background: none;
+		box-shadow: none;
+		transform: none;
+		visibility: visible;
+		transition: none;
+	}
+
+	/* alleen de bovenste lijst in een rij, de paarse panelen blijven onder elkaar */
+	header nav>ul {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	header nav>ul>li {
+		position: relative;
+	}
+
+	header nav li a,
+	header nav summary {
+		font-family: var(--font-tekst);
+		font-size: 1rem;
+		font-weight: 700;
+	}
+
+	/* paars paneel klapt uit onder het kopje */
+	header nav details ul {
+		position: absolute;
+		top: calc(100% + .9rem);
+		left: -1.5rem;
+		min-width: 17rem;
+		padding: 1rem 1.5rem;
+		box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .3);
+	}
+
+	header nav a.knop {
+		margin-top: 0;
+	}
+
+	/* groot scherm: het zoekveld schuift open naast het vergrootglas */
+	#zoekveld {
+		position: static;
+		width: 0;
+		padding: .45rem 0;
+		border: .15em solid transparent;
+		border-radius: 2em;
+		transition: width .3s, padding .3s, opacity .3s, visibility .3s;
+	}
+
+	.zoeken.open #zoekveld {
+		width: 14rem;
+		padding-inline: .9rem;
+		border-color: var(--color-teal-donker);
+		transition: width .3s, padding .3s, opacity .3s, visibility 0s;
+	}
+
+	/* vier kolommen; de padding houdt de inhoud even breed als de rest van de pagina (70rem) */
+	body>footer {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.5rem;
+		align-items: start;
+		padding-inline: max(2rem, calc((100% - 70rem) / 2));
+	}
+
+	body>footer>* {
+		margin-inline: 0;
+	}
+
+	footer summary {
+		justify-content: start;
+		gap: 1em;
+		padding-top: 0;
+		font-size: 1.1rem;
+	}
+
+	footer h2 {
+		margin-top: 0;
+	}
+
+	footer details {
+		border: none;
+	}
+}
+
+/* wie minder beweging wil, krijgt geen animaties */
+/* bron: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+}

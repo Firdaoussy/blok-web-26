@@ -1,0 +1,112 @@
+/*css voor de missiepagina*/
+
+/* sectie 1: intro */
+.intro {
+	background-color: var(--color-vlak);
+	color: #fff;
+}
+
+.intro h1 {
+	margin-bottom: .2em;
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.intro p {
+	margin-block: 0;
+	font-size: 1.2rem;
+}
+
+/* sectie 2 en 4: tekst, foto en citaat */
+.verhaal>* {
+	max-width: 46rem;
+}
+
+.verhaal img {
+	width: 100%;
+	height: auto;
+	margin-block: 1.5rem;
+}
+
+.lead {
+	font-family: var(--font-kop);
+	font-size: 1.2rem;
+	color: var(--color-paars-tekst);
+}
+
+blockquote {
+	margin: 2rem auto;
+	padding: 1.25rem;
+	border-left: .4rem solid var(--color-oranje);
+	background-color: var(--color-background-kaart);
+	font-style: italic;
+	text-align: center;
+}
+
+blockquote footer {
+	margin-top: .75rem;
+	font-weight: 700;
+}
+
+/* sectie 3: cijfers */
+.cijfers {
+	background-color: var(--color-vlak);
+	text-align: center;
+	color: #fff;
+}
+
+.cijfers ul {
+	display: grid;
+	gap: 1.5rem;
+}
+
+.stat-getal {
+	display: block;
+	font-family: var(--font-kop);
+	font-size: 2.6rem;
+	letter-spacing: -0.03em;
+}
+
+/* sectie 4: video en projecten */
+.werk h2 {
+	font-size: clamp(1.8rem, 6vw, 2.6rem);
+	color: var(--color-headings);
+}
+
+.werk iframe {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border: none;
+}
+
+.werk ul {
+	display: grid;
+	gap: 1.5rem;
+	margin-top: 2rem;
+}
+
+.werk li {
+	padding-bottom: 1rem;
+	background-color: var(--color-background-kaart);
+}
+
+.werk li>*:not(img) {
+	margin-inline: 1rem;
+}
+
+.werk h3 {
+	margin: .8rem 1rem .2rem;
+	font-size: 1.1rem;
+	color: var(--color-headings);
+}
+
+@media (min-width: 48em) {
+	.cijfers ul {
+		grid-template-columns: repeat(4, 1fr);
+		align-items: start;
+	}
+
+	.werk ul {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

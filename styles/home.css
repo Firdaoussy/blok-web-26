@@ -1,0 +1,246 @@
+/*css voor de homepagina*/
+
+/* sectie 1: intro, tekst over foto */
+.intro {
+	display: grid;
+	gap: 1.25rem;
+	padding: 0 0 2.5rem;
+	text-align: center;
+}
+
+/* de kop ligt los bovenop de foto (position: absolute), zo blijft hij altijd zichtbaar */
+/* max-width en margin terugzetten: anders krimpt de foto tot een blok in het midden */
+main .intro-beeld {
+	position: relative;
+	max-width: none;
+	margin-inline: 0;
+}
+
+/* foto van rand tot rand; de verhouding (breed : hoog) groeit mee met het scherm, nooit vierkant */
+/* bron: https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio */
+.intro img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 3 / 2;
+	max-height: 75vh;
+	object-fit: cover;
+	object-position: center 35%; /* de gezichten blijven in beeld */
+	filter: brightness(.7); /* donkerder, zodat de witte kop leesbaar blijft */
+}
+
+.intro h2 {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	display: grid;
+	place-items: center;
+	margin: 0;
+	padding: 0 1.25rem;
+	font-size: clamp(2.2rem, 9vw, 4.5rem);
+	font-weight: 900;
+	line-height: 1.1;
+	text-wrap: balance;
+	color: #fff;
+	text-shadow: 0 .05em .4em rgba(0, 0, 0, .7);
+}
+
+.intro p {
+	max-width: 36rem;
+	padding: 0 1.25rem;
+	margin-inline: auto;
+	font-family: var(--font-kop);
+	font-size: 1.1rem;
+	color: var(--color-paars-tekst);
+}
+
+.knoppen {
+	display: flex;
+	gap: .75rem;
+	padding: 0 1.25rem;
+	max-width: 24rem;
+	margin-inline: auto;
+	margin-block: 0;
+}
+
+/* sectie 2: groeit, teal vlak met drie kaarten */
+.groeit {
+	background-color: var(--color-vlak);
+	text-align: center;
+	color: #fff;
+}
+
+.groeit h2 {
+	font-size: clamp(2rem, 7vw, 3.2rem);
+	color: #fff;
+}
+
+.groeit ul {
+	display: grid;
+	gap: 2rem;
+}
+
+.groeit img {
+	margin-inline: auto;
+	width: min(20rem, 100%);
+}
+
+.groeit h3 {
+	margin: .8rem 0 .2rem;
+	font-size: 1.1rem;
+}
+
+/* de drie plaatjes springen: eenmalig als ze in beeld komen (JS) en bij hover of aanraken */
+/* bron: https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes */
+/*  dit zorgt ervoor dat ie dus springt eerst veel omhoog en dan een beetje*/
+@keyframes spring {
+
+	0% {
+		transform: translateY(0);
+	}
+
+	25% {
+		transform: translateY(-1.5rem);
+	}
+
+	50% {
+		transform: translateY(0);
+	}
+
+	70% {
+		transform: translateY(-.6rem);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+/* vertraging zodat ze niet tegelijkertijd springen 
+(alleen met het scrollen niet als je hovert (dus erlangs gaat) */
+.groeit li.springt img {
+	animation: spring .8s ease-out var(--vertraging, 0s);
+}
+
+.groeit li:hover img {
+	animation: spring .8s ease-out;
+}
+
+/* sectie 3: nieuws */
+.nieuws h2,
+.partners h2 {
+	font-size: clamp(1.8rem, 6vw, 2.6rem);
+	color: var(--color-headings);
+	text-align: center;
+}
+
+.nieuws ul {
+	display: grid;
+	gap: 1.5rem;
+}
+
+.nieuws li {
+	padding-bottom: 1.25rem;
+	background-color: var(--color-background-kaart);
+}
+
+.nieuws li>*:not(img) {
+	margin-inline: 1rem;
+}
+
+.nieuws img {
+	width: 100%;
+	margin-bottom: .75rem;
+}
+
+.label {
+	margin-bottom: 0;
+	font-size: .9rem;
+}
+
+.nieuws h3 {
+	font-size: 1.1rem;
+	color: #0b5d8c;
+}
+
+.donker-modus .nieuws h3 {
+	color: #8fd0ff;
+}
+
+/* sectie 4: nieuwsbrief */
+.nieuwsbrief {
+	display: flex;
+	flex-flow: column;
+	background-color: var(--color-vlak);
+	color: #fff;
+	text-align: center;
+}
+
+.nieuwsbrief h2 {
+	font-size: clamp(1.8rem, 6vw, 2.6rem);
+	color: #fff;
+}
+
+.nieuwsbrief .knop {
+	width: 100%;
+	max-width: 20rem;
+	margin-inline: auto;
+}
+
+/* sectie 5: partners */
+.partners ul {
+	display: grid;
+	/* omdat ik mobile first heb gewerkt zie je dus 2 staan omdat er 2 kolommen 
+	staan 1 os de fractional unit neem een deel van de beschikbare ruimte  */
+	grid-template-columns: repeat(2, 1fr);
+	gap: .75rem;
+	margin-top: 1.5rem;
+}
+
+.partners li {
+	display: grid;
+	place-items: center;
+	min-height: 5rem;
+	padding: .5rem;
+	background-color: #fff;
+	color: #1d1d1d;
+	font-family: var(--font-kop);
+	text-align: center;
+}
+
+.partners li img {
+	max-height: 4.5rem;
+	width: auto;
+}
+
+/* groter scherm */
+/* 1 m is 16 pixels dus je doet 48 x 16 = 768pixels (standaard voor tablet) dan weet je hoeveel pixels het 
+zijn dat is belangrijk voor om het responsive te maken dan weet 
+je dat er op dat moment een ander css in komt. 
+
+ik heb gekozen voor 1 breekpunt voor alles omdat het overzichtelijker leek voor mij.*/ 
+@media (min-width: 48em) {
+	.intro img {
+		aspect-ratio: 2 / 1;
+	}
+
+	.knoppen {
+		grid-auto-flow: column;
+		max-width: 28rem;
+	}
+
+	.groeit ul {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.nieuws ul {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.nieuwsbrief>* {
+		max-width: 40rem;
+	}
+
+	.partners ul {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

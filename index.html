@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="JINC webproject">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JINC - homepage</title>
+	<link href="styles/styles.css" rel="stylesheet">
+	<link href="styles/home.css" rel="stylesheet">
+	<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+
+<body>
+	<a class="sla-over" href="#main">Ga naar de inhoud</a>
+
+	<!-- topbalk: donkergrijze balk met service-links en de thema-knop -->
+	 <!-- we gebruiken semantische html elementen zodat een screenreader 
+	  betekenis kan toekennen aan wat het opleest.-->
+	  <!-- <div class="topbalk" -->
+	<nav aria-label="Service menu" class="topbalk">
+		<ul>
+			<li><a href="#">JINC-podcast</a></li>
+			<li><a href="#">Vacatures</a></li>
+			<li><a href="#contact">Contact</a></li>
+			<li><a href="#">Registreren</a></li>
+		</ul>
+		<button class="themaknop" aria-label="Wissel tussen donker en licht thema">Donker</button>
+	</nav>
+	<!-- </div> -->
+
+	<!-- header: logo, hoofdmenu met uitklaplijsten (details), zoeken en hamburgerknop -->
+	<!-- op de homepage staat het logo in de h1 en is het geen link (je bent al op de homepage) -->
+	<header>
+		<h1 class="logo"><img src="images/logo.png" width="400" height="144" alt="JINC, iedereen groeit met JINC"></h1>
+
+		<!-- hoofdmenu: groot scherm in de header,
+		  telefoon schuift het in beeld via de hamburgerknop -->
+
+		  <!-- sluit menu voor mobiel-->
+		   <!-- <details> zorgt ervoor dat het uitklapt. -->
+		<nav aria-label="Hoofdmenu">
+			<button class="sluitknop" aria-label="Sluit menu">&times;</button>
+			<ul>
+				<li>
+					<details>
+						<summary>Ons werk</summary>
+						<ul>
+							<li><a href="missie.html#werk">Onze projecten</a></li>
+							<li><a href="#contact">Onze vestigingen</a></li>
+							<li><a href="missie.html#cijfers">Onze impact</a></li>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>Doe mee</summary>
+						<ul>
+							<li><a href="#">Word vrijwilliger</a></li>
+							<li><button class="doemee-knop">Schrijf je in voor de nieuwsbrief</button></li>
+							<li><a href="index.html#partners">Word partner</a></li>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary>Over JINC</summary>
+						<ul>
+							<li><a href="missie.html">Onze missie</a></li>
+							<li><a href="index.html#partners">Onze partners</a></li>
+							<li><a href="#">Jaarverslag</a></li>
+						</ul>
+					</details>
+				</li>
+				<li><a href="index.html#nieuws">Nieuws</a></li>
+				<li><a class="knop knop-groen" href="index.html#partners">Word partner</a></li>
+			</ul>
+		</nav>
+
+		<!-- zoeken: de knop klapt het zoekveld uit; zoekt op jinc.nl via Google -->
+		 <!-- target zorgt ervoor dat je naar een ander tablat gaat. action is de actie
+		   die formulier gaat uitvoeren en gaat naar google  as_sitesearch 
+		   zie je in de url en q ook. value is dus dat alles binnen wordt opgezocht. -->
+		<form class="zoeken" target="_blank" action="https://www.google.com/search">
+			<input type="hidden" name="as_sitesearch" value="jinc.nl">
+			<label class="onzichtbaar" for="zoekveld">Zoek op jinc.nl</label>
+			<input id="zoekveld" type="search" name="q" placeholder="Zoeken...">
+			<button type="button" class="zoekknop" aria-label="Zoeken" aria-expanded="false" aria-controls="zoekveld">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"></circle><path d="M15 15l6 6"></path></svg>
+			</button>
+		</form>
+
+		<button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+	</header>
+
+	<main>
+		<!-- sectie 1: intro met kop, tekst en twee knoppen -->
+		<section class="intro">
+			<div class="intro-beeld">
+				<img src="images/hero.jpg" width="1600" height="1067" alt="Kinderen bouwen samen met witte buizen tijdens een JINC-activiteit">
+				<h2>JINC helpt jongeren op weg naar werk</h2>
+			</div>
+			<p>Ieder kind heeft talent. Daarom werkt JINC samen met bedrijven en scholen aan een samenleving waar je achtergrond niet je toekomst bepaalt.</p>
+			<!-- <div class="knoppen"> -->
+			<p class="knoppen">
+				<a class="knop knop-teal" href="missie.html">Ons verhaal</a>
+				<a class="knop knop-oranje" href="#nieuwsbrief">Doe mee</a>
+			</p>
+			<!-- </div> -->
+		</section>
+
+		<!-- sectie 2: iedereen groeit met JINC, drie doelgroepen -->
+		<section class="groeit">
+			<h2>Iedereen groeit met JINC</h2>
+			<ul>
+				<li>
+					<!-- alt: als het plaatje niet werkt krijg je uitleg over het plaatje en de screenreader leest het op -->
+					<img src="images/kinderen.png" width="720" height="450" loading="lazy" alt="Illustratie van een kind met een verrekijker">
+					<h3>Kinderen</h3>
+					<p>leren wat nodig is voor een vliegende start op de arbeidsmarkt.</p>
+				</li>
+				<li>
+					<img src="images/bedrijven.png" width="720" height="450" loading="lazy" alt="Illustratie van een lachend kantoorgebouw">
+					<h3>Bedrijven</h3>
+					<p>zetten maatschappelijke idealen om in de praktijk.</p>
+				</li>
+				<li>
+					<img src="images/werknemers.png" width="720" height="450" loading="lazy" alt="Illustratie van een werknemer die wijst">
+					<h3>Werknemers</h3>
+					<p>halen plezier en voldoening uit het delen van hun ervaring.</p>
+				</li>
+			</ul>
+		</section>
+
+		<!-- sectie 3: nieuws -->
+		<section class="nieuws" id="nieuws">
+			<h2>Nieuws</h2>
+			<ul>
+				<li>
+					<img src="images/nieuws1.jpg" width="900" height="600" loading="lazy" alt="Twee mensen in gesprek aan een tafel">
+					<p class="label">Landelijk</p>
+					<h3>Van JINC Baas van Morgen naar Compliance Analyst</h3>
+					<p>Zo'n drie jaar geleden maakte Chakir voor het eerst kennis met Van Ameyde. Hij zat toen nog op het Rijswijks Lyceum mavo en mocht voor één dag in de voetsporen treden van directielid Jan-Michiel Cillessen als JINC Baas van Morgen.</p>
+					<a class="lees-meer" href="#">Lees meer<span class="onzichtbaar"> over Van JINC Baas van Morgen naar Compliance Analyst</span></a>
+				</li>
+				<li>
+					<img src="images/nieuws2.png" width="900" height="600" loading="lazy" alt="Oproep om vrijwilliger te worden bij JINC">
+					<p class="label">Landelijk</p>
+					<h3>Vrijwilligers en trainers gezocht!</h3>
+					<p>Je hoeft geen ervaren trainer, coach of docent te zijn. Jouw kennis, enthousiasme en betrokkenheid zijn het belangrijkst. Samen zorgen we ervoor dat jongeren nieuwe werelden ontdekken, zelfvertrouwen opbouwen en zien welke mogelijkheden er voor hen zijn.</p>
+					<a class="lees-meer" href="#">Lees meer<span class="onzichtbaar"> over Vrijwilligers en trainers gezocht!</span></a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- sectie 4: nieuwsbrief-oproep, opent de pop-up -->
+		<section class="nieuwsbrief" id="nieuwsbrief">
+			<h2>Blijf verbonden via de nieuwsbrief</h2>
+			<p>Ja, ik wil op de hoogte blijven van JINC. Je ontvangt 10x per jaar onze nieuwsbrief met het laatste nieuws, succesverhalen en vacatures.</p>
+			<button class="knop knop-oranje doemee-knop">Schrijf je in</button>
+		</section>
+
+		<!-- sectie 5: partners (namen als tekst, vervang door logo's) -->
+		<section class="partners" id="partners">
+			<h2>Onze landelijke partners en fondsen</h2>
+			<ul>
+				<li>ASML</li>
+				<li>BAM</li>
+				<li>BDO</li>
+				<li>BNP&nbsp;Paribas</li>
+				<li>Coca-Cola</li>
+				<li>Deloitte</li>
+				<li>DHL&nbsp;Express</li>
+				<li>Dioraphte</li>
+				<li>Domino's</li>
+				<li>Equans</li>
+				<li>EY</li>
+				<li><img src="images/vsb-fonds.png" width="300" height="300" loading="lazy" alt="VSB fonds, iedereen doet mee"></li>
+			</ul>
+		</section>
+
+	</main>
+
+	<!-- footer: uitklapbare lijsten, contact en social media -->
+	<footer>
+		<details>
+			<summary>Over JINC</summary>
+			<ul>
+				<li><a href="missie.html">Onze missie</a></li>
+				<li><a href="#">Jaarverslag</a></li>
+				<li><a href="#">Werken bij JINC</a></li>
+			</ul>
+		</details>
+		<details>
+			<summary>Overig</summary>
+			<ul>
+				<li><a href="#">Privacy</a></li>
+				<li><a href="#">Cookies</a></li>
+				<li><a href="#">Disclaimer</a></li>
+			</ul>
+		</details>
+
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>JINC Landelijk<br>Mariaplaats 21<br>3511 LK Utrecht</p>
+			<p>T: <a href="#">Bel een JINC vestiging</a></p>
+			<p>E: <a href="mailto:info@jinc.nl">info@jinc.nl</a></p>
+		</section>
+
+		<section>
+			<h2>Volg JINC</h2>
+			<ul class="social">
+				<li><a href="#" aria-label="Facebook">f</a></li>
+				<li><a href="#" aria-label="YouTube">&#9654;</a></li>
+				<li><a href="#" aria-label="LinkedIn">in</a></li>
+				<li><a href="#" aria-label="Instagram">&#9711;</a></li>
+			</ul>
+		</section>
+	</footer>
+
+	<!-- pop-up nieuwsbrief: native dialog-element, geopend met JS -->
+	<dialog id="nieuwsbrief-popup" aria-labelledby="popup-titel">
+		<form method="dialog" class="popup-form">
+			<h2 id="popup-titel">Blijf verbonden via de nieuwsbrief</h2>
+			<label for="popup-mail">E-mailadres</label>
+			<input id="popup-mail" type="email" required placeholder="naam@voorbeeld.nl">
+			<p class="popup-melding" role="status"></p>
+			<div class="popup-knoppen">
+				<button type="submit" class="knop knop-oranje">Schrijf je in</button>
+				<button type="button" class="knop knop-teal popup-sluit">Sluiten</button>
+			</div>
+		</form>
+	</dialog>
+
+	<script defer src="scripts/script.js"></script>
+</body>
+
+</html>
